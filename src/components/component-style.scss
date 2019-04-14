@@ -1,0 +1,87 @@
+.playAreaContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(26, 131, 26);
+
+  .bank {
+    p {
+      margin: 0;
+    }
+  }
+
+  .dealerZone {
+    flex-basis: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+  }
+
+  .boardZone {
+    flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+  }
+
+  .actionBarZone {
+    flex-basis: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+
+    .betting-form {
+      display: flex;
+      flex-direction: column;
+
+      .bet-input-area {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .playerZone {
+    flex-basis: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+  }
+
+  .hand {
+    font-size: 34px;
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+  }
+
+  .card {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .heads-up {
+    font-weight: 700;
+  }
+
+  .heads-down {
+    color: grey;
+    background-color: grey;
+  }
+
+  .board {
+    display: flex;
+    font-size: 34px;
+  }
+}
