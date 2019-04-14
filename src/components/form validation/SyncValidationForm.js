@@ -11,7 +11,7 @@ export const validate = (values, props) => {
   } else if (isNaN(Number(values.bet))) {
     errors.bet = "Must be a number";
   } else if (Number(values.bet) <= 0) {
-    errors.bet = "Must be more than 0";
+    errors.bet = "Must be a positive number";
   } else if (parseInt(Number(values.bet)) !== Number(values.bet)) {
     errors.bet = "Must be an integer";
   } else if (Number(values.bet > props.playerBR)) {

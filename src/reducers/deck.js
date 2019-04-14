@@ -12,12 +12,12 @@ const shuffled = shuffleDeck(DECK);
 function deckReducer(state = { shuffled, dealerHand, playerHand }, action) {
   switch (action.type) {
     case REMOVE_CARD_FROM_DECK:
-      let tempState = { state };
-      tempState[action.payload] = null;
-      return tempState;
+      // let tempState = { state };
+      // tempState[action.payload] = null;
+      // return tempState;
+      return state;
     case DEAL_CARD:
-      return null;
-
+      return state;
     default:
       return state;
   }

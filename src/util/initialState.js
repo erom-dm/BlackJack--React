@@ -72,10 +72,10 @@ export function shuffleDeck(deck) {
   }
   return arr;
 }
-
 export const dealerHand = {};
 export const playerHand = {};
 export const board = {};
+
 export const bank = 0;
 export const playerBankroll = 10000;
 export const dealerBankroll = 0;

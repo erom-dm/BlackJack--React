@@ -7,13 +7,12 @@ const dealer = store => next => action => {
 
   if (action.type === PLAYER_MADE_BET && state.gameState === "pre-deal") {
     dispatch(dealCard("player"));
-    dispatch(dealCard("player"));
     dispatch(dealCard("dealer"));
+    dispatch(dealCard("player"));
     dispatch(dealCard("dealer"));
   }
 
-  const returnValue = next(action);
-  return returnValue;
+  return next(action);
 };
 
 export default dealer;
