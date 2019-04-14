@@ -2,14 +2,16 @@ import { CHANGE_GAME_PHASE } from "../actions/gameState";
 import { PLAYER_MADE_BET } from "../actions/bank";
 
 // Game Phases
-const PRE_DEAL = "pre-deal";
-const DEALING = "dealing";
+export const PRE_DEAL = "pre_deal";
+export const CHECKING_DEALER_BJ = "checking_dealer_bj";
+export const PLAYER_PHASE = "player_phase";
+export const DEALER_PHASE = "dealer_phase";
 
-function gameStateReducer(state = "pre-deal", action) {
+function gameStateReducer(state = PRE_DEAL, action) {
   switch (action.type) {
     case PLAYER_MADE_BET:
       if (state === PRE_DEAL) {
-        return { state: DEALING };
+        return { state: CHECKING_DEALER_BJ };
       }
       return state;
     case CHANGE_GAME_PHASE:

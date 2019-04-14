@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { changeGamePhase } from "../actions/gameState";
 import { playerMadeBet } from "../actions/bank";
 import BettingInput from "./BetInput";
+import { PRE_DEAL } from "../reducers/gameState";
 
 class ActionBar extends Component {
   state = {
@@ -17,7 +18,7 @@ class ActionBar extends Component {
     const {phase, playerBankroll} = this.props;
     return (
       <div className="actionBar">
-        {phase === "pre-deal" ? (
+        {phase === PRE_DEAL ? (
           <BettingInput onSubmit={this.submit} playerBR={playerBankroll} />
         ) : (
           <Fragment>
