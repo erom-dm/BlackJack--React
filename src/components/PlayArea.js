@@ -36,10 +36,7 @@ class PlayArea extends Component {
       <div className="playAreaContainer">
         <div className="dealerZone">
           <Bank val={bank.dealerBankroll} cName="bank dealerBankroll" />
-          <Hand
-            className="dealerHand"
-            cards={deck.dealerHand}
-          />
+          <Hand className="dealerHand" cards={deck.dealerHand} />
         </div>
 
         <div className="boardZone">
@@ -52,9 +49,7 @@ class PlayArea extends Component {
 
         <div className="playerZone">
           <Bank val={bank.playerBankroll} cName="bank playerBankroll" />
-          <Hand
-            className="playerHand"
-          />
+          <Hand className="playerHand" cards={deck.playerHand}/>
         </div>
       </div>
     );

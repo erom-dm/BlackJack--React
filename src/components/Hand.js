@@ -5,10 +5,11 @@ class Hand extends Component {
   render() {
     return (
       <div className="hand">
-        {/*
-        <Card value={this.props.c1.val} headsUp={this.props.c1.hu} />
-        <Card value={this.props.c2.val} headsUp={this.props.c2.hu} />
-        */}
+        {
+          this.props.cards.map((card) => {
+            return <Card value={card.val} headsUp={card.hu} key={card.id}/>
+          })
+        }
       </div>
     );
   }
