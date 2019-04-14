@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { changeGamePhase } from "../actions/gameState";
 import { playerMadeBet } from "../actions/bank";
 import BettingInput from "./BetInput";
-import { PRE_DEAL } from "../reducers/gameState";
+import {PRE_DEAL} from "../util/gamePhases";
 
 class ActionBar extends Component {
   state = {

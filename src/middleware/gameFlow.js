@@ -1,6 +1,6 @@
 import { PLAYER_MADE_BET } from "../actions/bank";
 import { dealCard } from "../actions/deck";
-import { PRE_DEAL } from "../reducers/gameState";
+import {PRE_DEAL} from "../util/gamePhases";
 
 const dealer = store => next => action => {
   const state = store.getState();

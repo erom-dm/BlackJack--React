@@ -1,11 +1,6 @@
 import { CHANGE_GAME_PHASE } from "../actions/gameState";
 import { PLAYER_MADE_BET } from "../actions/bank";
-
-// Game Phases
-export const PRE_DEAL = "pre_deal";
-export const CHECKING_DEALER_BJ = "checking_dealer_bj";
-export const PLAYER_PHASE = "player_phase";
-export const DEALER_PHASE = "dealer_phase";
+import {PRE_DEAL, CHECKING_DEALER_BJ} from "../util/gamePhases";
 
 function gameStateReducer(state = PRE_DEAL, action) {
   switch (action.type) {

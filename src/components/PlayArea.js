@@ -3,19 +3,18 @@ import "./component-style.scss";
 import Hand from "./Hand";
 import Bank from "./Bank";
 import ActionBar from "./ActionBar";
-import { getRandomInt } from "../util/initialState"
 import { connect } from "react-redux";
 import { removeCardFromDeck } from "../actions/deck";
 
 class PlayArea extends Component {
-  dealaCard(deck) {
+  /*dealaCard(deck) {
     const cardNum = this.getRandomInt(0, 51);
     const card = deck[cardNum];
     this.props.removeCardFromDeck(cardNum);
     return card;
-  }
+  }*/
 
-  shuffleDeck(deck) {
+  /*shuffleDeck(deck) {
     const arr = [];
     const iterations = deck.length;
 
@@ -27,10 +26,14 @@ class PlayArea extends Component {
       deck.splice(index, 1);
     }
     return arr;
-  }
+  }*/
+
+  /*checkDealerBlackJack(dealerHand, gamePhase){
+    if ()
+  }*/
 
   render() {
-    const { bank, board, deck, gameState, hands } = this.props.state;
+    const { bank, deck, gameState} = this.props.state;
 
     return (
       <div className="playAreaContainer">
