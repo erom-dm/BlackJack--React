@@ -13,7 +13,7 @@ class BettingInput extends Component {
           name="bet"
           component={renderField}
           type="text"
-          label="Bet"
+          label="Amount"
         />
         <button className="bet" type="submit">
           Bet

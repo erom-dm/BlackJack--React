@@ -3,6 +3,7 @@ import "./component-style.scss";
 import Hand from "./Hand";
 import Bank from "./Bank";
 import ActionBar from "./ActionBar";
+import { getRandomInt } from "../util/initialState"
 import { connect } from "react-redux";
 import { removeCardFromDeck } from "../actions/deck";
 
@@ -14,19 +15,13 @@ class PlayArea extends Component {
     return card;
   }
 
-  getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
   shuffleDeck(deck) {
     const arr = [];
     const iterations = deck.length;
 
     for (let i = 0; i < iterations; i++) {
       const len = deck.length;
-      const index = this.getRandomInt(0, len);
+      const index = getRandomInt(0, len);
 
       arr.push(deck[index]);
       deck.splice(index, 1);
@@ -43,7 +38,7 @@ class PlayArea extends Component {
           <Bank val={bank.dealerBankroll} cName="bank dealerBankroll" />
           <Hand
             className="dealerHand"
-            cards={this.props.state.deck.dealerHand}
+            cards={deck.dealerHand}
           />
         </div>
 
@@ -59,8 +54,6 @@ class PlayArea extends Component {
           <Bank val={bank.playerBankroll} cName="bank playerBankroll" />
           <Hand
             className="playerHand"
-            c1={deck[this.getRandomInt(0, 51)]}
-            c2={deck[this.getRandomInt(0, 51)]}
           />
         </div>
       </div>

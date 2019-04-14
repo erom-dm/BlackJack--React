@@ -10,8 +10,6 @@ class ActionBar extends Component {
   };
 
   submit = value => {
-    console.log("<<<<<<<<>>>>>>>>>");
-    console.log(value);
     return this.props.playerMadeBet(value);
   };
 
@@ -20,10 +18,7 @@ class ActionBar extends Component {
     return (
       <div className="actionBar">
         {phase === "pre-deal" ? (
-          <BettingInput
-            onSubmit={this.submit}
-            playerBR={this.props.playerBankroll}
-          />
+          <BettingInput onSubmit={this.submit} />
         ) : (
           <Fragment>
             <button className="hit">hit</button>
@@ -38,7 +33,6 @@ class ActionBar extends Component {
 function mapStateToProps(state) {
   return {
     phase: state.gameState,
-    playerBankroll: state.bank.playerBankroll
   };
 }
 
