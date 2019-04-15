@@ -4,7 +4,8 @@ import Hand from "./Hand";
 import Bank from "./Bank";
 import ActionBar from "./ActionBar";
 import { connect } from "react-redux";
-import { removeCardFromDeck } from "../actions/deck";
+import { turnACard } from "../actions/deck";
+import { CHECKING_DEALER_BJ } from "../util/gamePhases";
 
 class PlayArea extends Component {
   /*dealaCard(deck) {
@@ -28,9 +29,21 @@ class PlayArea extends Component {
     return arr;
   }*/
 
-  /*checkDealerBlackJack(dealerHand, gamePhase){
-    if ()
-  }*/
+  static checkDealerBlackJack(dealerHand, gamePhase){
+    if (gamePhase === CHECKING_DEALER_BJ){
+      if (dealerHand[0].hu === true && dealerHand[0].val >= 10){
+        console.log('BJ check initiated --------------->>>>>');
+        if (dealerHand[0].val + dealerHand[1].val === 21){
+          console.log('!!!DEALER HAS BJ!!!');
+          turnACard(dealerHand[1].id, 'dealer')
+        }
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    PlayArea.checkDealerBlackJack(this.props.state.deck.dealerHand, this.props.state.gameState)
+  }
 
   render() {
     const { bank, deck, gameState} = this.props.state;
@@ -67,11 +80,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    removeCardFromDeck
+    turnACard,
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PlayArea);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayArea);

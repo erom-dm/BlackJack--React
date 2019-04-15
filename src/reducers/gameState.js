@@ -6,7 +6,7 @@ function gameStateReducer(state = PRE_DEAL, action) {
   switch (action.type) {
     case PLAYER_MADE_BET:
       if (state === PRE_DEAL) {
-        return { state: CHECKING_DEALER_BJ };
+        return CHECKING_DEALER_BJ;
       }
       return state;
     case CHANGE_GAME_PHASE:

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { changeGamePhase } from "../actions/gameState";
 import { playerMadeBet } from "../actions/bank";
 import BettingInput from "./BetInput";
 import {PRE_DEAL} from "../util/gamePhases";
@@ -39,8 +38,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  changePhase: changeGamePhase,
-  playerMadeBet
+  playerMadeBet,
 };
 
 export default connect(
