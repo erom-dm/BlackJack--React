@@ -5,7 +5,8 @@ import Bank from "./Bank";
 import ActionBar from "./ActionBar";
 import { connect } from "react-redux";
 import { turnACard } from "../actions/deck";
-import { CHECKING_DEALER_BJ } from "../util/gamePhases";
+import { dealerBlackJack } from "../actions/gameState";
+import * as Phase from "../util/gamePhases";
 
 class PlayArea extends Component {
   /*dealaCard(deck) {
@@ -29,24 +30,43 @@ class PlayArea extends Component {
     return arr;
   }*/
 
-  static checkDealerBlackJack(dealerHand, gamePhase){
-    if (gamePhase === CHECKING_DEALER_BJ){
-      if (dealerHand[0].hu === true && dealerHand[0].val >= 10){
-        console.log('BJ check initiated --------------->>>>>');
-        if (dealerHand[0].val + dealerHand[1].val === 21){
-          console.log('!!!DEALER HAS BJ!!!');
-          turnACard(dealerHand[1].id, 'dealer')
-        }
+  checkDealerBlackJack(dealerHand){
+    const { turnACard, dealerBlackJack } = this.props;
+    if (dealerHand[0].hu === true && dealerHand[0].val >= 10){
+      console.log('BJ check initiated --------------->>>>>');
+      if (dealerHand[0].val + dealerHand[1].val === 21){
+        console.log('!!!DEALER HAS BJ!!!');
+        turnACard(dealerHand[1].id, 'dealer');
+        dealerBlackJack();
       }
     }
   }
 
+  resolveRound(){
+
+  }
+
   componentDidUpdate(prevProps, prevState, snapshot) {
-    PlayArea.checkDealerBlackJack(this.props.state.deck.dealerHand, this.props.state.gameState)
+    const { dealerHand, gameState } = this.props.state;
+    const currentPhase = gameState.phase;
+
+    switch (currentPhase){
+      case Phase.CHECKING_DEALER_BJ:
+        this.checkDealerBlackJack(dealerHand);
+        if (gameState.dealer_bj){
+          this.resolveRound();
+        }
+        return;
+      case Phase.DEALER_PHASE:
+
+        return;
+      default:
+        return;
+    }
   }
 
   render() {
-    const { bank, deck, gameState} = this.props.state;
+    const { bank, deck } = this.props.state;
 
     return (
       <div className="playAreaContainer">
@@ -74,13 +94,15 @@ class PlayArea extends Component {
 
 function mapStateToProps(state) {
   return {
+    dealerHand: state.deck.dealerHand,
     state
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    turnACard,
+    turnACard: dispatch(turnACard()),
+    dealerBlackJack: dispatch(dealerBlackJack()),
   };
 }
 

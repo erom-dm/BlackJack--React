@@ -6,7 +6,7 @@ const dealer = store => next => action => {
   const state = store.getState();
   const dispatch = store.dispatch;
 
-  if (action.type === PLAYER_MADE_BET && state.gameState === PRE_DEAL) {
+  if (action.type === PLAYER_MADE_BET && state.gameState.phase === PRE_DEAL) {
     dispatch(dealCard("player"));
     dispatch(dealCard("dealer"));
     dispatch(dealCard("player"));

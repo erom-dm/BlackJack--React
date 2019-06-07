@@ -32,7 +32,7 @@ class ActionBar extends Component {
 
 function mapStateToProps(state) {
   return {
-    phase: state.gameState,
+    phase: state.gameState.phase,
     playerBankroll: state.bank.playerBankroll,
   };
 }
